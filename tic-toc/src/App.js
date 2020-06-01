@@ -16,18 +16,15 @@ class App extends Component {
     console.log("event on board : ", event.target);
     console.log("event on board : ", this.state.turn);
     console.log("event on board : ", this.state.turn);
-
-    // console.log("1:",this.state.board[event.target.dataset.square]);
-    this.state.board[event.target.dataset.square] = this.state.turn;
-    
-    event.target.innerText = this.state.turn;
-    // if (event.target.innerText === "") {
+    if (this.state.board[event.target.dataset.square] === '') {
+      this.state.board[event.target.dataset.square] = this.state.turn;
+      event.target.innerText = this.state.turn;
       this.setState({
         turn: this.state.turn == 'x' ? 'o' : 'x',
-        board:this.state.board
+        board: this.state.board
       })
-      console.log("2:",this.state.board);
-    // }
+      console.log("2:", this.state.board);
+    }
 
 
   }

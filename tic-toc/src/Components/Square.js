@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 
 class Square extends React.Component {
+    size = 0;
+    str=""
+    boarSize=0
+    className="board_"
     constructor() {
         super();
         this.state = {
@@ -16,35 +20,34 @@ class Square extends React.Component {
         console.log("event on board : ", this.state.turn);
         console.log("event on board : ", this.state.turn);
 
-        // console.log("1:",this.state.board[event.target.dataset.square]);
         this.state.board[event.target.dataset.square] = this.state.turn;
 
         event.target.innerText = this.state.turn;
-        // if (event.target.innerText === "") {
         this.setState({
             turn: this.state.turn == 'x' ? 'o' : 'x',
             board: this.state.board
         })
         console.log("2:", this.state.board);
-        // }
-
-
     }
+
     render() {
+        console.log(">>>>>>>>>>>>>",this.props.squares);
+        
+        this.boarSize=this.props.squares * this.props.squares;
+        const elements=Array(this.boarSize).fill('');
+      
+        const items = []
+        for (const [index, value] of elements.entries()) {
+          items.push(<div key={index} className='square' data-square={index}></div> )
+        }
+      
         return (
-            <div id="board" onClick={(e) => this.boardClicked(e)}>
-                <div className="square" data-square="0"></div>
-                <div className="square" data-square="1"></div>
-                <div className="square" data-square="2"></div>
-                <div className="square" data-square="3"></div>
-                <div className="square" data-square="4"></div>
-                <div className="square" data-square="5"></div>
-                <div className="square" data-square="6"></div>
-                <div className="square" data-square="7"></div>
-                <div className="square" data-square="8"></div>
-            </div>
-        );
-    }
+          <div id={this.className + this.props.squares} onClick={(e) => this.boardClicked(e)}>
+            {items}
+          </div>
+        )
+      }
+      
 }
 
 export default Square;

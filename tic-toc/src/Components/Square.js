@@ -19,18 +19,12 @@ class Square extends React.Component {
       this.setState({boarSize:this.props.squares})
     }
     boardClicked(event) {
-        console.log("event on board : ", event.target);
-        console.log("event on board : ", this.state.turn);
-        console.log("event on board : ", this.state.turn);
-
         this.state.board[event.target.dataset.square] = this.state.turn;
-
         event.target.innerText = this.state.turn;
         this.setState({
             turn: this.state.turn == 'x' ? 'o' : 'x',
             board: this.state.board
         })
-        console.log("2:", this.state.board);
     }
     componentWillMount (){
       this.setState({boarSize:this.props.squares})
@@ -45,7 +39,6 @@ class Square extends React.Component {
         }
       
         return (
-          // id={this.className + this.props.squares} if we need to add id
           <div  className="wrap" style={{width:this.props.squares*100}} onClick={(e) => this.boardClicked(e)}>
             {items}
           </div>

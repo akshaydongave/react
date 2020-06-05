@@ -1,19 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Square from './Square';
-import App from '../App'
 
 class Board extends React.Component {
-    size=this.props.size
     renderSquare(i) {
-        // this.state.boardSize
-        console.log("props : ",this.props.size);
-            
-        return <Square squares={this.size} />;
+        return <Square squares={this.props.size} />;
     }
-   
     render() {
+        console.log("props : ",this.props.size);
         return  this.renderSquare()
-
     }
 }
 
